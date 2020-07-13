@@ -106,7 +106,7 @@ public class MapSpriteSelector : MonoBehaviour
             }
             else
             {
-                rend.sprite = spR;
+                rend.sprite = spD;
             }
             return;
         }

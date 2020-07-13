@@ -256,13 +256,13 @@ public class LevelGeneration : MonoBehaviour
                     chambers[x, y].doorBot = (chambers[x, y - 1] != null);
                 }
 
-                if (y - 1< 0)
+                if (y + 1 >= gridSizeY * 2)
                 {
                     chambers[x, y].doorTop = false;
                 } 
                 else
                 {
-                    chambers[x, y].doorTop = (chambers[x, y - 1] != null);
+                    chambers[x, y].doorTop = (chambers[x, y + 1] != null);
                 }
 
                 if (x - 1 < 0)
@@ -271,15 +271,15 @@ public class LevelGeneration : MonoBehaviour
                 }
                 else
                 {
-                    chambers[x, y].doorLeft = (chambers[x, y - 1] != null);
+                    chambers[x, y].doorLeft = (chambers[x - 1, y] != null);
                 }
-                if (x - 1 < 0)
+                if (x + 1 >= gridSizeX * 2)
                 {
                     chambers[x, y].doorRight = false;
                 }
                 else
                 {
-                    chambers[x, y].doorRight = (chambers[x, y - 1] != null);
+                    chambers[x, y].doorRight = (chambers[x + 1, y] != null);
                 }
             }
         }
