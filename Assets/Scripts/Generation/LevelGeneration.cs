@@ -9,7 +9,7 @@ public class LevelGeneration : MonoBehaviour
     List<Vector2> takenPositions = new List<Vector2>();
     int gridSizeX, gridSizeY;
     public int numberOfChambers = 20;
-    public GameObject roomObj;
+    public GameObject GenerationRoomObject;
 
     void Start()
     {
@@ -220,7 +220,7 @@ public class LevelGeneration : MonoBehaviour
             drawPosition.x *= 16;
             drawPosition.y *= 8;
 
-            MapSpriteSelector mapper = Object.Instantiate(roomObj, drawPosition, Quaternion.identity).GetComponent<MapSpriteSelector>();
+            MapSpriteSelector mapper = Object.Instantiate(GenerationRoomObject, drawPosition, Quaternion.identity).GetComponent<MapSpriteSelector>();
             Debug.Log("new obj" + chamber);
 
             //set equal to other script
