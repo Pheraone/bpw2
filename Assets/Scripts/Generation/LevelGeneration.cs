@@ -7,7 +7,8 @@ public class LevelGeneration : MonoBehaviour
     Vector2 worldSize = new Vector2(4, 4);
     Chamber[,] chambers;
     List<Vector2> takenPositions = new List<Vector2>();
-    int gridSizeX, gridSizeY, numberOfChambers = 20;
+    int gridSizeX, gridSizeY;
+    public int numberOfChambers = 20;
     public GameObject roomObj;
 
     void Start()
@@ -27,6 +28,7 @@ public class LevelGeneration : MonoBehaviour
 
     public void CreateChambers()
     {
+        Debug.Log("I do something");
         //setup
         chambers = new Chamber[gridSizeX * 2, gridSizeX * 2];
         //starting point at the center of the scene, type 1
@@ -36,11 +38,12 @@ public class LevelGeneration : MonoBehaviour
 
         float randomCompare = 0.2f;
         float randomCompareBegin = 0.2f;
-        float randomCompareEnd = 0.2f;
+        float randomCompareEnd = 0.1f;
 
         //loop for rooms
-        for(int i = 0; i < numberOfChambers; i++)
+        for(int i = 0; i < numberOfChambers -1; i++)
         {
+           
             float randomPerc = ((float)i) / (((float)numberOfChambers - 1));
             //magic numbers? 
             randomCompare = Mathf.Lerp(randomCompareBegin, randomCompareEnd, randomPerc);
@@ -59,11 +62,14 @@ public class LevelGeneration : MonoBehaviour
                 { 
                     Debug.Log("Can not create with fewer neighbours than : " + NumberOfNeighbours(checkPosition, takenPositions));
                 }
-                //finalize position
-                chambers[(int)checkPosition.x + gridSizeX, (int)checkPosition.y + gridSizeY] = new Chamber(checkPosition, 0);
-                takenPositions.Insert(0, checkPosition);
-            }
+
+            }                //finalize position
+
+            chambers[(int)checkPosition.x + gridSizeX, (int)checkPosition.y + gridSizeY] = new Chamber(checkPosition, 0);
+            takenPositions.Insert(0, checkPosition);
         }
+
+        Debug.Log("hre");
 
     }
 
@@ -108,7 +114,7 @@ public class LevelGeneration : MonoBehaviour
             }
             //go through loop till free position is found within grid
             checkingPosition = new Vector2(x, y);
-        } while(takenPositions.Contains(checkingPosition) || x >= gridSizeX || x <= -gridSizeX || y >= gridSizeY || y <= - gridSizeY);
+        } while(takenPositions.Contains(checkingPosition) || x >= gridSizeX || x <= -gridSizeX || y >= gridSizeY || y <= -gridSizeY);
 
         return checkingPosition;
     }
@@ -195,18 +201,42 @@ public class LevelGeneration : MonoBehaviour
         {
             ret++;
         }
-        //...dit (wat is handiger en waarom?)
-        /*  if(usedPositions.Contains(checkingPosition+ Vector2.right) || usedPositions.Contains(checkingPosition + Vector2.left) || usedPositions.Contains(checkingPosition + Vector2.up) || usedPositions.Contains(checkingPosition + Vector2.down))
-        {
-            ret++;
-        }*/
         return ret;
 
     }
 
+    public void DrawMap()
+    {
+
+        foreach (Chamber chamber in chambers)
+        {
+            Debug.Log(chamber);
+            if (chamber == null)
+            {
+                continue;
+            }
+
+            Vector2 drawPosition = chamber.gridPosition;
+            drawPosition.x *= 16;
+            drawPosition.y *= 8;
+
+            MapSpriteSelector mapper = Object.Instantiate(roomObj, drawPosition, Quaternion.identity).GetComponent<MapSpriteSelector>();
+            Debug.Log("new obj" + chamber);
+
+            //set equal to other script
+            mapper.type = chamber.type;
+            mapper.up = chamber.doorTop;
+            mapper.down = chamber.doorBot;
+            mapper.right = chamber.doorRight;
+            mapper.left = chamber.doorLeft;
+
+        }
+    }
+
+
     public void SetChamberDoors()
     {
-        for(int x = 0; x<((gridSizeX * 2)); x++)
+        for(int x = 0; x< ((gridSizeX * 2)); x++)
         {
             for(int y = 0; y < ((gridSizeY * 2)); y++)
             {
@@ -214,7 +244,9 @@ public class LevelGeneration : MonoBehaviour
                 {
                     continue;
                 }
+
                 Vector2 gridPosition = new Vector2(x, y);
+
                 if (y - 1< 0)
                 {
                     chambers[x, y].doorBot = false;
@@ -251,11 +283,5 @@ public class LevelGeneration : MonoBehaviour
                 }
             }
         }
-
-    }
-
-    public void DrawMap()
-    {
-
     }
 }
