@@ -27,16 +27,4 @@ public class SheetAssigner : MonoBehaviour
             myChamber.Setup(sheetsNormal[index], chamber.gridPosition, chamber.type, chamber.doorTop, chamber.doorBot, chamber.doorLeft, chamber.doorRight);
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

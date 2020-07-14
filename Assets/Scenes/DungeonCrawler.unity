@@ -256,9 +256,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sheetsNormal:
-  - {fileID: 0}
+  - {fileID: 2800000, guid: 6a2afc2d8519c4c45affee19b2fb2414, type: 3}
+  - {fileID: 2800000, guid: 001d6b6b585038d4dbafaa48fd56ef5d, type: 3}
+  - {fileID: 2800000, guid: 3d35ca2e2831d8841b0e0df61e6bf6f2, type: 3}
+  - {fileID: 2800000, guid: b58bc6de1939ce241be29ad6ead6da3c, type: 3}
   RoomObj: {fileID: 3546809666774670419, guid: 5f704b4af48478246a579d001be92bab, type: 3}
-  roomDimensions: {x: 272, y: 304}
+  roomDimensions: {x: 272, y: 144}
   gutterSize: {x: 144, y: 64}
 --- !u!1 &24418283
 GameObject:
@@ -296,7 +299,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.4245283, g: 0.08610716, b: 0.08610716, a: 1}
+  m_BackGroundColor: {r: 0.654902, g: 0.654902, b: 0.654902, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -337,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24418283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 20, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1108093106}
@@ -1036,7 +1039,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.15686275}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1077,7 +1080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435938632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -21}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

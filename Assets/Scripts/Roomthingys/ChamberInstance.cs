@@ -1,5 +1,4 @@
-﻿using System.CodeDom.Compiler;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +6,8 @@ public class ChamberInstance : MonoBehaviour
 {
 
     public Texture2D tex;
-    [HideInInspector]
 
+    [HideInInspector]
     public Vector2 gridPosition;
 
     public int type; //Levelgenerator -> 0 = normal, 1 = enter
@@ -16,9 +15,11 @@ public class ChamberInstance : MonoBehaviour
     [HideInInspector]
     public bool doorTop, doorBot, doorLeft, doorRight;
 
-    [SerializeField] GameObject doorU, doorD, doorL, doorR, doorWall;
+    [SerializeField] 
+    GameObject doorU, doorD, doorL, doorR, doorWall;
 
-    [SerializeField] ColorToGameObject[] mappings;
+    [SerializeField] 
+    ColorToGameObject[] mappings;
 
     float tileSize = 16;
     Vector2 roomSizeInTiles = new Vector2(9, 17);
@@ -34,12 +35,6 @@ public class ChamberInstance : MonoBehaviour
         this.doorRight = doorRight;
         MakeDoors();
         GenerateRoomTiles();
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 
@@ -59,6 +54,7 @@ public class ChamberInstance : MonoBehaviour
         PlaceDoor(spawnPosition, doorLeft, doorL);
     }
 
+    //DEBUG hier komt ie niet aan...
     void PlaceDoor(Vector3 spawnPosition, bool door, GameObject doorSpawn)
     {
         if(door)

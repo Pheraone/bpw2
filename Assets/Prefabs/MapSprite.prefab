@@ -97,7 +97,7 @@ MonoBehaviour:
   spU: {fileID: 21300000, guid: 399f974663a1a754ea71daae2e1f8020, type: 3}
   spD: {fileID: 21300000, guid: b32b37d353310fb4bb8456c938cd7675, type: 3}
   spR: {fileID: 21300000, guid: 25933fb456878e2448b34ae7cbb50690, type: 3}
-  spL: {fileID: 21300000, guid: a4b4a780f33e216479b96f97642d75a5, type: 3}
+  spL: {fileID: 21300000, guid: 1ec6f7ff6e3d401448df2c7a8cfd8edc, type: 3}
   spUD: {fileID: 21300000, guid: d3ae1074fff275843ab03fc3fb6450e6, type: 3}
   spRL: {fileID: 21300000, guid: a97c75dd28b574f49a125b67be158d6c, type: 3}
   spUR: {fileID: 21300000, guid: 59eac877b7ce99d4c90f81297bb911e1, type: 3}

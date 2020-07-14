@@ -24,6 +24,8 @@ public class LevelGeneration : MonoBehaviour
         CreateChambers();
         SetChamberDoors();
         DrawMap();
+
+        GetComponent<SheetAssigner>().Assign(chambers);
     }
 
     public void CreateChambers()

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3546809666774670419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -29, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,11 +72,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -50
   m_Sprite: {fileID: 21300000, guid: 1624d63599542634da20ccd812395678, type: 3}
-  m_Color: {r: 0.26321647, g: 0.31321517, b: 0.6132076, a: 1}
+  m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 2.72, y: 1.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -108,13 +108,6 @@ MonoBehaviour:
   doorWall: {fileID: 9197863013688161995, guid: dc5dc51c3318d764bacd50e88ddee1a9,
     type: 3}
   mappings:
-  - color: {r: 1, g: 0, b: 0.9686275, a: 0}
-    prefab: {fileID: 0}
-  - color: {r: 1, g: 0, b: 0.9686275, a: 0}
-    prefab: {fileID: 0}
-  - color: {r: 1, g: 0, b: 0.9686275, a: 0}
-    prefab: {fileID: 0}
-  - color: {r: 1, g: 0, b: 0.9686275, a: 0}
-    prefab: {fileID: 0}
-  - color: {r: 1, g: 0, b: 0.9686275, a: 0}
-    prefab: {fileID: 0}
+  - color: {r: 0, g: 0, b: 0, a: 1}
+    prefab: {fileID: 9197863013688161995, guid: dc5dc51c3318d764bacd50e88ddee1a9,
+      type: 3}

@@ -17,7 +17,7 @@ public class MainMenuState : GameState
     public override void Enter()
     {
         GameManager.Instance.mainMenuObject.SetActive(true);
-        Cursor.visible = false;
+        Cursor.visible = true;
         Time.timeScale = 0;
     }
 
