@@ -60,7 +60,6 @@ public class ChamberInstance : MonoBehaviour
         if(door)
         {
             Instantiate(doorSpawn, spawnPosition, Quaternion.identity).transform.parent = transform;
-
         }
         else
         {
