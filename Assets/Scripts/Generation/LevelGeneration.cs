@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
+
     Vector2 worldSize = new Vector2(4, 4);
     Chamber[,] chambers;
     List<Vector2> takenPositions = new List<Vector2>();
@@ -22,15 +23,33 @@ public class LevelGeneration : MonoBehaviour
         gridSizeY = Mathf.RoundToInt(worldSize.y);
 
         CreateChambers();
-        SetChamberDoors();
-        DrawMap();
 
-        GetComponent<SheetAssigner>().Assign(chambers);
+       
+    }
+
+    private void Update()
+    {
+        if ( Input.GetKeyDown(KeyCode.R) )
+        {
+            CreateChambers();
+        }
     }
 
     public void CreateChambers()
     {
         Debug.Log("I do something");
+
+        if ( chambers != null )
+        {
+            GameObject[] currentChambers = GameObject.FindGameObjectsWithTag("Chamber");
+            foreach ( GameObject thisChamber in currentChambers )
+            {
+                Destroy(thisChamber);
+            }
+
+            takenPositions = new List<Vector2>();
+        }
+
         //setup
         chambers = new Chamber[gridSizeX * 2, gridSizeX * 2];
         //starting point at the center of the scene, type 1
@@ -73,6 +92,11 @@ public class LevelGeneration : MonoBehaviour
 
         Debug.Log("hre");
 
+        SetChamberDoors();
+        DrawMap();
+        GetComponent<SheetAssigner>().Assign(chambers);
+
+        CloseDoors.Instance.ReloadDoors();
     }
 
     Vector2 NewPosition()
@@ -222,8 +246,10 @@ public class LevelGeneration : MonoBehaviour
             drawPosition.x *= 16;
             drawPosition.y *= 8;
 
+
             MapSpriteSelector mapper = Object.Instantiate(GenerationRoomObject, drawPosition, Quaternion.identity).GetComponent<MapSpriteSelector>();
             Debug.Log("new obj" + chamber);
+
 
             //set equal to other script
             mapper.type = chamber.type;

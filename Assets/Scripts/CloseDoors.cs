@@ -2,20 +2,34 @@
 using System.Collections.Generic;
 using System.Xml.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CloseDoors : MonoBehaviour
 {
-     private bool doorToggle = false;
-     private  GameObject[] doors;
-
-    void Awake()
+    private static CloseDoors instance;
+    public static CloseDoors Instance
     {
-        doors = GameObject.FindGameObjectsWithTag("Door");
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType<CloseDoors>();
+
+            return instance;
+        }
+    }
+
+    private bool doorToggle = true;
+    private GameObject[] doors;
+
+    private void Awake()
+    {
+        ReloadDoors();
     }
 
     // Update is called once per frame
-   void Update()
+    void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             doorToggle = !doorToggle;
@@ -25,11 +39,20 @@ public class CloseDoors : MonoBehaviour
 
     public void ActivateDoors(bool active)
     {
+        if ( doors.Length == 0 )
+        {
+            ReloadDoors();
+        }
+
         foreach (GameObject door in doors)
         {
             door.SetActive(active);
-           
         }
         Debug.Log("Deur " + doors.Length);
+    }
+
+    public void ReloadDoors()
+    {
+        doors = GameObject.FindGameObjectsWithTag("Door");
     }
 }

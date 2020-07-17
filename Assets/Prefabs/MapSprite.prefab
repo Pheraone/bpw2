@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2036024906163031135}
   m_Layer: 8
   m_Name: MapSprite
-  m_TagString: Untagged
+  m_TagString: Chamber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
