@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private static PlayerMovement instance;
+    public static PlayerMovement Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType<PlayerMovement>();
 
+            return instance;
+        }
+    }
 
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
@@ -35,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("player collided with " + collider.name);
-        CloseDoors.Instance.ActivateDoors(true);
+        CloseDoors.ClosingDoors.ActivateDoors(true);
       
     }
 

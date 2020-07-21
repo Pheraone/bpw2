@@ -6,20 +6,20 @@ using UnityEngine.UIElements;
 
 public class CloseDoors : MonoBehaviour
 {
-    private static CloseDoors instance;
-    public static CloseDoors Instance
+    private static CloseDoors closingDoors;
+    public static CloseDoors ClosingDoors
     {
         get
         {
-            if (instance == null)
-                instance = FindObjectOfType<CloseDoors>();
+            if (closingDoors == null)
+                closingDoors = FindObjectOfType<CloseDoors>();
 
-            return instance;
+            return closingDoors;
         }
     }
 
     private bool doorToggle = true;
-    private GameObject[] doors;
+    public GameObject[] doors;
 
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class CloseDoors : MonoBehaviour
 
     public void ActivateDoors(bool active)
     {
-        if ( doors.Length == 0 )
+        if (doors.Length == 0)
         {
             ReloadDoors();
         }

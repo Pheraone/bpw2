@@ -31,6 +31,10 @@ public class LevelGeneration : MonoBehaviour
     {
         if ( Input.GetKeyDown(KeyCode.R) )
         {
+            //fix might be emptying the list here
+            //List not yet empty here after regenerating the dungeon... needs fix, this is gamebreaking.
+            //Debug.Log("Doors is : " + CloseDoors.Instance.doors);
+            //CloseDoors.ClosingDoors.ReloadDoors();
             CreateChambers();
         }
     }
@@ -39,14 +43,18 @@ public class LevelGeneration : MonoBehaviour
     {
         Debug.Log("I do something");
 
+        //checks if rooms are in the array
         if ( chambers != null )
         {
+            //set player pos back to 0.0
+            PlayerMovement.Instance.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
             GameObject[] currentChambers = GameObject.FindGameObjectsWithTag("Chamber");
+            //destroy all existing chambers
             foreach ( GameObject thisChamber in currentChambers )
             {
                 Destroy(thisChamber);
             }
-
+            CloseDoors.ClosingDoors.ReloadDoors();
             takenPositions = new List<Vector2>();
         }
 
@@ -96,7 +104,7 @@ public class LevelGeneration : MonoBehaviour
         DrawMap();
         GetComponent<SheetAssigner>().Assign(chambers);
 
-        CloseDoors.Instance.ReloadDoors();
+        CloseDoors.ClosingDoors.ReloadDoors();
     }
 
     Vector2 NewPosition()
