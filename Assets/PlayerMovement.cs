@@ -44,8 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("player collided with " + collider.name);
-        CloseDoors.ClosingDoors.ActivateDoors(true);
+        if (collider.tag == "DoorTrigger")
+        {
+            CloseDoors.ClosingDoors.ActivateDoors(true);
+        }
       
     }
 

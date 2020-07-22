@@ -41,7 +41,7 @@ public class LevelGeneration : MonoBehaviour
 
     public void CreateChambers()
     {
-        Debug.Log("I do something");
+        
 
         //checks if rooms are in the array
         if ( chambers != null )
@@ -54,7 +54,7 @@ public class LevelGeneration : MonoBehaviour
             {
                 Destroy(thisChamber);
             }
-            CloseDoors.ClosingDoors.ReloadDoors();
+           // CloseDoors.ClosingDoors.ReloadDoors();
             takenPositions = new List<Vector2>();
         }
 
@@ -97,8 +97,6 @@ public class LevelGeneration : MonoBehaviour
             chambers[(int)checkPosition.x + gridSizeX, (int)checkPosition.y + gridSizeY] = new Chamber(checkPosition, 0);
             takenPositions.Insert(0, checkPosition);
         }
-
-        Debug.Log("hre");
 
         SetChamberDoors();
         DrawMap();
@@ -244,7 +242,7 @@ public class LevelGeneration : MonoBehaviour
 
         foreach (Chamber chamber in chambers)
         {
-            Debug.Log(chamber);
+            
             if (chamber == null)
             {
                 continue;

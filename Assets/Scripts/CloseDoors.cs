@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class CloseDoors : MonoBehaviour
 {
+    //dit is een singleton
     private static CloseDoors closingDoors;
     public static CloseDoors ClosingDoors
     {
@@ -21,9 +22,12 @@ public class CloseDoors : MonoBehaviour
     private bool doorToggle = true;
     public GameObject[] doors;
 
+    public List<GameObject> doorsList;
+
     private void Awake()
     {
         ReloadDoors();
+        doorsList = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -39,20 +43,37 @@ public class CloseDoors : MonoBehaviour
 
     public void ActivateDoors(bool active)
     {
-        if (doors.Length == 0)
-        {
-            ReloadDoors();
-        }
+        //    Debug.Log("doors is " + doors.Length);
+        //    if (doors.Length == 0)
+        //    {
+        //        ReloadDoors();
+        //    }
 
-        foreach (GameObject door in doors)
+        //    foreach (GameObject door in doors)
+        //    {
+        //        door.SetActive(active);
+        //    }
+        //    Debug.Log("Deur " + doors.Length);
+
+        foreach (GameObject door in doorsList)
         {
             door.SetActive(active);
         }
-        Debug.Log("Deur " + doors.Length);
     }
-
     public void ReloadDoors()
     {
         doors = GameObject.FindGameObjectsWithTag("Door");
+        doorsList.Clear();
+
+        Debug.Log("door list count: " + doorsList.Count);
+        StartCoroutine("OneFrameReload");
+    }
+
+    public IEnumerator OneFrameReload()
+    {
+        yield return 0;
+
+        doorsList.AddRange(GameObject.FindGameObjectsWithTag("Door"));
     }
 }
+

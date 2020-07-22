@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Map
   - Door
+  - Chamber
+  - DoorTrigger
   layers:
   - Default
   - TransparentFX
