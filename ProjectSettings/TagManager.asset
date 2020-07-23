@@ -19,9 +19,9 @@ TagManager:
   - 
   - Map
   - Door
-  - 
-  - 
-  - 
+  - Player
+  - Turret
+  - Object
   - 
   - 
   - 
