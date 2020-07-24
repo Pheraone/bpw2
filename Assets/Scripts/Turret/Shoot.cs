@@ -10,27 +10,26 @@ public class Shoot : MonoBehaviour
     public GameObject bulletPrefab;
     public float range = 15f;
     Vector3 direction;
-    float fireRate = 0.5f;
+    float fireRate = 1f;
     float RotationSpeed = 10f;
+    public float speed = 30;
     bool targetSpotted;
+
 
     IEnumerator coroutine;
 
     private void Start()
     {
-        //InvokeRepeating("UpdateTarget", 0f, 0.5f); 
+        
+        Target = GameObject.FindGameObjectWithTag("Player").transform;
         coroutine = ShootBullet();
+       
     }
 
     void Update()
     {
 
-        //if trigger is triggered
-        /*if (Input.GetKeyDown(KeyCode.Space)){
-          ShootBullet();
-        } */
-        //timer for shoot cooldown
-
+        Debug.Log(gameObject.name + targetSpotted);
         if (targetSpotted)
         {
             // lekker draaien
@@ -41,13 +40,15 @@ public class Shoot : MonoBehaviour
         }
 
     }
+   
+
     IEnumerator ShootBullet()
     {
         while(true)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Vector2 dir = new Vector2(direction.x, direction.y);
-            bullet.GetComponent<Rigidbody2D>().velocity = dir * 10f;
+            bullet.GetComponent<Rigidbody2D>().velocity = dir * speed;
             yield return new WaitForSeconds(fireRate);
         }
     }
@@ -62,11 +63,12 @@ public class Shoot : MonoBehaviour
         }
     }
 
+
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.tag=="Player")
+        if (collider.tag =="Player")
         {
-            targetSpotted = false;
+           targetSpotted = false;
             StopCoroutine(coroutine);
             Debug.Log("Stopped");
         }
