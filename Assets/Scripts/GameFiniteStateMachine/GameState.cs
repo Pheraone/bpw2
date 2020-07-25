@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GameStateType { MainMenu, Play, Pause, Win, Lose}
+public enum GameStateType { Play, Pause, Win, Lose}
 
 public abstract class GameState
 {
@@ -12,30 +12,6 @@ public abstract class GameState
     public abstract void Update();
 }
 
-public class MainMenuState : GameState
-{
-    public override void Enter()
-    {
-        GameManager.Instance.mainMenuObject.SetActive(true);
-        Cursor.visible = true;
-        Time.timeScale = 0;
-    }
-
-    public override void Exit()
-    {
-        GameManager.Instance.mainMenuObject.SetActive(false);
-        Time.timeScale = 1;
-    }
-
-    public override void Update()
-    {
-        if (Input.anyKeyDown)
-        {
-            GameManager.Instance.fsm.GotoState(GameStateType.Play);
-            GameManager.Instance.StartLevel();
-        }
-    }
-}
 
 public class PlayState : GameState
 {

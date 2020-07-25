@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     // scene references
     [Header("UI objects")]
-    [SerializeField] internal GameObject mainMenuObject;
+
     [SerializeField] internal GameObject pauseObject;
     [SerializeField] internal GameObject WinObject;
     [SerializeField] internal GameObject LoseObject;
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        GotoMainMenu();
+        GotoPlay();
     }
 
     private void Update()
@@ -65,11 +65,7 @@ public class GameManager : MonoBehaviour
     }
 
     #region GOTO_STATE
-    public void GotoMainMenu()
-    {
-        fsm.GotoState(GameStateType.MainMenu);
-        EndLevel();
-    }
+   
 
     public void GotoPlay()
     {

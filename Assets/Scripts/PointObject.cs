@@ -23,6 +23,7 @@ public class PointObject : MonoBehaviour
         {
             PlayerMovement.Instance.points++;
             Destroy(gameObject);
+
         }
 
     }

@@ -16,7 +16,6 @@ public class GameFSM
         states = new Dictionary<GameStateType, GameState>();
 
         // add all states 
-        states.Add(GameStateType.MainMenu, new MainMenuState());
         states.Add(GameStateType.Play, new PlayState());
         states.Add(GameStateType.Pause, new PauseState());
         states.Add(GameStateType.Lose, new LoseState());
