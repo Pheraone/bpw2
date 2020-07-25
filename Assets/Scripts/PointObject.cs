@@ -17,13 +17,18 @@ public class PointObject : MonoBehaviour
         
     }
 
+    
+     
+    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            DoorsBehaviour.ClosingDoors.ActivateDoors(false);
             PlayerMovement.Instance.points++;
             Destroy(gameObject);
-
+          
         }
 
     }

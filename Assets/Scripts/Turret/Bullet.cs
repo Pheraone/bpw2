@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     float numberOfCollisions = 0;
     float lifetime = 2;
     float timer;
+    int myDamage = 10;
     void Start()
     {
         fireParticles.Play();
@@ -42,7 +43,7 @@ public class Bullet : MonoBehaviour
 
         if(collider.gameObject.tag == "Player")
         {
-            Debug.Log("I hit the player");
+            PlayerMovement.Instance.GetDamage(myDamage);
         }
     }
 }

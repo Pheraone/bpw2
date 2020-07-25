@@ -17,7 +17,7 @@ public class PlayState : GameState
 {
     public override void Enter()
     {
-        
+        Time.timeScale = 1;
     }
 
     public override void Exit()

@@ -76,5 +76,7 @@ public class GameManager : MonoBehaviour
     {
         fsm.GotoState(GameStateType.Pause);
     }
+
+  
     #endregion
 }

@@ -41,6 +41,7 @@ public class LevelGeneration : MonoBehaviour
         if(level > 3)
         {
             GameManager.Instance.fsm.GotoState(GameStateType.Win);
+            level = 0;
         }
     }
 
