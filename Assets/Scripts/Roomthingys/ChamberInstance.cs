@@ -85,16 +85,7 @@ public class ChamberInstance : MonoBehaviour
     void GenerateTile(int x, int y)
     {
 
-        // Color pixel = tex.GetPixel(x, y);
-        //    if (pixel == FirstColour)
-        //    {
-        //        Debug.Log(pixel);
-        //    }
-        //    else if (pixel == SecondColour)
-        //    {
-        //        ...
-        //    }
-        //}
+      
 
 
         Color pixel = tex.GetPixel(x, y);
@@ -105,9 +96,11 @@ public class ChamberInstance : MonoBehaviour
         }
         foreach (ColorToGameObject mapping in mappings)
         {
-            if (mapping.color.Equals(pixel))
+            Debug.Log("mappingColor = " + mapping.color + "  pixelcolor = " + pixel);
+            //if (mapping.color.Equals(pixel))
+            if (mapping.color.r == pixel.r && mapping.color.g == pixel.g && mapping.color.b == pixel.b)
             {
-                Debug.Log("mappingColor = " + mapping.color + "  pixelcolor = " + pixel);
+               
 
                 Vector3 spawnPosition = PositionFromTileGrid(x, y);
                 Instantiate(mapping.prefab, spawnPosition, Quaternion.identity).transform.parent = this.transform;

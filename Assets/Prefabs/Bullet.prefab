@@ -99,12 +99,12 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.52
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 10.23
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!58 &2494472916845139721
 CircleCollider2D:

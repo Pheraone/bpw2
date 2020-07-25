@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
     public void Dead()
     {
         GameManager.Instance.fsm.GotoState(GameStateType.Lose);
+        AudioHandler.AudioHandle.StopTheMusic();
     }
 
     //50 times a second

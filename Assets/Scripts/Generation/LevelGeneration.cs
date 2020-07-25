@@ -27,6 +27,7 @@ public class LevelGeneration : MonoBehaviour
 
     void Start()
     {
+        
         level = 0;
         //math for generation
         if(numberOfChambers >= (worldSize.x * 2) * (worldSize.y * 2))
@@ -38,21 +39,22 @@ public class LevelGeneration : MonoBehaviour
 
         CreateChambers();
 
-        
+        AudioHandler.AudioHandle.PlayTheMusic();
     }
 
     private void Update()
     {
-        if ( Input.GetKeyDown(KeyCode.R) )
-        {
-            GenerateNewLevel();
-            Debug.Log(level);
-        }
+        //if ( Input.GetKeyDown(KeyCode.R) )
+        //{
+        //    GenerateNewLevel();
+        //    Debug.Log(level);
+        //}
 
         if(level > 3)
         {
             GameManager.Instance.fsm.GotoState(GameStateType.Win);
             level = 0;
+            AudioHandler.AudioHandle.StopTheMusic();
         }
     }
 
