@@ -4,16 +4,16 @@ using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CloseDoors : MonoBehaviour
+public class DoorsBehaviour : MonoBehaviour
 {
     //dit is een singleton
-    private static CloseDoors closingDoors;
-    public static CloseDoors ClosingDoors
+    private static DoorsBehaviour closingDoors;
+    public static DoorsBehaviour ClosingDoors
     {
         get
         {
             if (closingDoors == null)
-                closingDoors = FindObjectOfType<CloseDoors>();
+                closingDoors = FindObjectOfType<DoorsBehaviour>();
 
             return closingDoors;
         }

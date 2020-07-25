@@ -54,7 +54,7 @@ public class ChamberInstance : MonoBehaviour
         PlaceDoor(spawnPosition, doorLeft, doorL);
     }
 
-    //DEBUG hier komt ie niet aan...
+   
     void PlaceDoor(Vector3 spawnPosition, bool door, GameObject doorSpawn)
     {
         if(door)
@@ -93,7 +93,7 @@ public class ChamberInstance : MonoBehaviour
                 Instantiate(mapping.prefab, spawnPosition, Quaternion.identity).transform.parent = this.transform;
             } else
             {
-                //Hmmm
+      
             }
         }
     }

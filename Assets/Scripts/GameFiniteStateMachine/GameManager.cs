@@ -25,7 +25,10 @@ public class GameManager : MonoBehaviour
     [Header("UI objects")]
     [SerializeField] internal GameObject mainMenuObject;
     [SerializeField] internal GameObject pauseObject;
-    
+    [SerializeField] internal GameObject WinObject;
+    [SerializeField] internal GameObject LoseObject;
+
+
 
     // state machine
     internal GameFSM fsm;

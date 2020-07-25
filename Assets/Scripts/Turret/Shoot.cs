@@ -12,9 +12,10 @@ public class Shoot : MonoBehaviour
     Vector3 direction;
     float fireRate = 1f;
     float RotationSpeed = 10f;
-    public float speed = 30;
+    public float speed = 30f;
+    float numberOfCollisionsT;
     bool targetSpotted;
-
+    
 
     IEnumerator coroutine;
 
@@ -74,5 +75,17 @@ public class Shoot : MonoBehaviour
         }
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        numberOfCollisionsT++;
+        if(numberOfCollisionsT >= 2)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
 }
+
+
+

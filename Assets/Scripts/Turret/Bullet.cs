@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-   public ParticleSystem fireParticles  = new ParticleSystem();
+    public ParticleSystem fireParticles  = new ParticleSystem();
     float numberOfCollisions = 0;
     float lifetime = 2;
     float timer;
@@ -12,6 +12,8 @@ public class Bullet : MonoBehaviour
         fireParticles.Play();
         timer = lifetime;
     }
+
+
     
 
     // Update is called once per frame

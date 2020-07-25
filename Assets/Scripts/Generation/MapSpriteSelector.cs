@@ -15,7 +15,7 @@ public class MapSpriteSelector : MonoBehaviour
     //roomtype 0 = normal, 1 = enter
     public int type;
 
-    public Color normalColor, enterColor;
+    public Color normalColor, enterColor, exitColor;
 
     Color mainColor;
 
@@ -136,6 +136,9 @@ public class MapSpriteSelector : MonoBehaviour
         else if (type == 1)
         {
             mainColor = enterColor;
+        } else if (type == 2)
+        {
+            mainColor  = exitColor;
         }
         rend.color = mainColor;
     }

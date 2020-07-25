@@ -19,6 +19,8 @@ public class GameFSM
         states.Add(GameStateType.MainMenu, new MainMenuState());
         states.Add(GameStateType.Play, new PlayState());
         states.Add(GameStateType.Pause, new PauseState());
+        states.Add(GameStateType.Lose, new LoseState());
+        states.Add(GameStateType.Win, new WinState());
     }
 
     public GameState GetState(GameStateType type)

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -18,14 +19,13 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
-
+    public int points;
     Vector2 movement;
     //public CloseDoors closingDoor;
 
     private void Start()
     {
-       
-            
+        points = 0;
     }
 
     void Update()
@@ -46,9 +46,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collider.tag == "DoorTrigger")
         {
-            CloseDoors.ClosingDoors.ActivateDoors(true);
+            DoorsBehaviour.ClosingDoors.ActivateDoors(true);
         }
-      
+
+    
     }
 
 }

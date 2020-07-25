@@ -256,3 +256,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 535206978870964229, guid: a210371a7b664fa4daf4b14e6f1a5f6a,
     type: 3}
   range: 34.08
+  speed: 200

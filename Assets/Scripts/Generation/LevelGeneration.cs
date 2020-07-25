@@ -11,9 +11,12 @@ public class LevelGeneration : MonoBehaviour
     int gridSizeX, gridSizeY;
     public int numberOfChambers = 20;
     public GameObject GenerationRoomObject;
+    public int level;
+
 
     void Start()
     {
+        level = 0;
         //math for generation
         if(numberOfChambers >= (worldSize.x * 2) * (worldSize.y * 2))
         {
@@ -24,25 +27,42 @@ public class LevelGeneration : MonoBehaviour
 
         CreateChambers();
 
-       
+        
     }
 
     private void Update()
     {
         if ( Input.GetKeyDown(KeyCode.R) )
         {
-            //fix might be emptying the list here
-            //List not yet empty here after regenerating the dungeon... needs fix, this is gamebreaking.
-            //Debug.Log("Doors is : " + CloseDoors.Instance.doors);
-            //CloseDoors.ClosingDoors.ReloadDoors();
-            CreateChambers();
+            GenerateNewLevel();
+            Debug.Log(level);
+        }
+
+        if(level > 3)
+        {
+            GameManager.Instance.fsm.GotoState(GameStateType.Win);
         }
     }
 
-    public void CreateChambers()
-    {
+   void GenerateNewLevel()
+   {
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        if (bullets.Length > 0)
+        {
+            foreach (GameObject bullet in bullets)
+            {
+                Destroy(bullet);
+            }
+        }
         
 
+        CreateChambers();
+   }
+
+    public void CreateChambers()
+    {
+
+       
         //checks if rooms are in the array
         if ( chambers != null )
         {
@@ -56,6 +76,11 @@ public class LevelGeneration : MonoBehaviour
             }
            // CloseDoors.ClosingDoors.ReloadDoors();
             takenPositions = new List<Vector2>();
+            
+            if(level > 3 )
+            {
+                
+            }
         }
 
         //setup
@@ -96,13 +121,22 @@ public class LevelGeneration : MonoBehaviour
 
             chambers[(int)checkPosition.x + gridSizeX, (int)checkPosition.y + gridSizeY] = new Chamber(checkPosition, 0);
             takenPositions.Insert(0, checkPosition);
+
         }
+
+        level++;
+        //if (NumberOfNeighbours(checkPosition, takenPositions) == 1)      
+        //{
+        //   //hier moet de eind kamer komen... misschien
+
+
+        //}
 
         SetChamberDoors();
         DrawMap();
         GetComponent<SheetAssigner>().Assign(chambers);
 
-        CloseDoors.ClosingDoors.ReloadDoors();
+        DoorsBehaviour.ClosingDoors.ReloadDoors();
     }
 
     Vector2 NewPosition()
@@ -154,7 +188,7 @@ public class LevelGeneration : MonoBehaviour
     //gets chamber with 1 neighbour for extra brancing effect
     Vector2 SelectiveNewPosition()
     {
-        //Ugly if's, need to change this if I can
+        
         int index = 0;
         int inc;
         int x = 0;
