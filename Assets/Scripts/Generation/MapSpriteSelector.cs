@@ -34,7 +34,7 @@ public class MapSpriteSelector : MonoBehaviour
 
     }
 
-
+    //the if train to pick the sprite
     void PickSprite()
     {
         if (up)
@@ -136,10 +136,7 @@ public class MapSpriteSelector : MonoBehaviour
         else if (type == 1)
         {
             mainColor = enterColor;
-        } else if (type == 2)
-        {
-            mainColor  = exitColor;
-        }
+        } 
         rend.color = mainColor;
     }
 }

@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class LevelGeneration : MonoBehaviour
 {
+    private static LevelGeneration levelGenerator;
+    public static LevelGeneration LevelGenerator
+    {
+        get
+        {
+            if (levelGenerator == null)
+                levelGenerator = FindObjectOfType<LevelGeneration>();
+
+            return levelGenerator;
+        }
+    }
 
     Vector2 worldSize = new Vector2(4, 4);
     Chamber[,] chambers;
     List<Vector2> takenPositions = new List<Vector2>();
     int gridSizeX, gridSizeY;
-    public int numberOfChambers = 20;
+    [SerializeField] public int numberOfChambers;
     public GameObject GenerationRoomObject;
     public int level;
 
@@ -45,7 +56,7 @@ public class LevelGeneration : MonoBehaviour
         }
     }
 
-   void GenerateNewLevel()
+  public void GenerateNewLevel()
    {
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
         if (bullets.Length > 0)

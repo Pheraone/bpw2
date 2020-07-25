@@ -11,20 +11,11 @@ public class PointObject : MonoBehaviour
         effect.Play();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
-     
-    
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            //doors will be activated and points will be added
             DoorsBehaviour.ClosingDoors.ActivateDoors(false);
             PlayerMovement.Instance.points++;
             Destroy(gameObject);

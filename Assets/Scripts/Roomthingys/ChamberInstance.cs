@@ -15,14 +15,17 @@ public class ChamberInstance : MonoBehaviour
     [HideInInspector]
     public bool doorTop, doorBot, doorLeft, doorRight;
 
-    [SerializeField] 
+    [SerializeField]
     GameObject doorU, doorD, doorL, doorR, doorWall;
 
-    [SerializeField] 
+    [SerializeField]
     ColorToGameObject[] mappings;
 
     float tileSize = 16;
     Vector2 roomSizeInTiles = new Vector2(9, 17);
+
+    //[SerializeField] public static readonly Color FirstColour;
+    //public static readonly Color SecondColour = new Color(0, 0, 0, 1);
 
     public void Setup(Texture2D tex, Vector2 gridPosition, int type, bool doorTop, bool doorBot, bool doorLeft, bool doorRight)
     {
@@ -35,12 +38,12 @@ public class ChamberInstance : MonoBehaviour
         this.doorRight = doorRight;
         MakeDoors();
         GenerateRoomTiles();
-        
+
     }
 
     public void MakeDoors()
     {
-        //Watch out this is calculated for 9,17 tiles only!!!! might be diffrent with other sizes
+        //possibilties for doors
         Vector3 spawnPosition = transform.position + Vector3.up * (roomSizeInTiles.y / 4 * tileSize) - Vector3.up * (tileSize / 4);
         PlaceDoor(spawnPosition, doorTop, doorU);
 
@@ -54,10 +57,11 @@ public class ChamberInstance : MonoBehaviour
         PlaceDoor(spawnPosition, doorLeft, doorL);
     }
 
-   
+
     void PlaceDoor(Vector3 spawnPosition, bool door, GameObject doorSpawn)
     {
-        if(door)
+        //spawn doors and walls
+        if (door)
         {
             Instantiate(doorSpawn, spawnPosition, Quaternion.identity).transform.parent = transform;
         }
@@ -69,9 +73,9 @@ public class ChamberInstance : MonoBehaviour
 
     void GenerateRoomTiles()
     {
-        for(int x = 0; x< tex.width; x++)
+        for (int x = 0; x < tex.width; x++)
         {
-            for(int  y = 0; y < tex.height; y++)
+            for (int y = 0; y < tex.height; y++)
             {
                 GenerateTile(x, y);
             }
@@ -80,29 +84,48 @@ public class ChamberInstance : MonoBehaviour
 
     void GenerateTile(int x, int y)
     {
-        Color pixelColor = tex.GetPixel(x, y);
-        if (pixelColor.a == 0)
+
+        // Color pixel = tex.GetPixel(x, y);
+        //    if (pixel == FirstColour)
+        //    {
+        //        Debug.Log(pixel);
+        //    }
+        //    else if (pixel == SecondColour)
+        //    {
+        //        ...
+        //    }
+        //}
+
+
+        Color pixel = tex.GetPixel(x, y);
+
+        if (pixel.a == 0)
         {
             return;
         }
         foreach (ColorToGameObject mapping in mappings)
         {
-            if (mapping.color.Equals(pixelColor))
+            if (mapping.color.Equals(pixel))
             {
+                Debug.Log("mappingColor = " + mapping.color + "  pixelcolor = " + pixel);
+
                 Vector3 spawnPosition = PositionFromTileGrid(x, y);
                 Instantiate(mapping.prefab, spawnPosition, Quaternion.identity).transform.parent = this.transform;
-            } else
+            }
+            else
             {
-      
+
             }
         }
     }
 
-    Vector3 PositionFromTileGrid(int x, int y)
-    {
-        Vector3 ret;
-        Vector3 offset = new Vector3((-roomSizeInTiles.x + 1) * tileSize, (roomSizeInTiles.y / 4) * tileSize - (tileSize / 4), 0);
-        ret = new Vector3(tileSize * (float)x, -tileSize * (float) y, 0) + offset + transform.position;
-        return ret;
+
+        Vector3 PositionFromTileGrid(int x, int y)
+        {
+            Vector3 ret;
+            Vector3 offset = new Vector3((-roomSizeInTiles.x + 1) * tileSize, (roomSizeInTiles.y / 4) * tileSize - (tileSize / 4), 0);
+            ret = new Vector3(tileSize * (float)x, -tileSize * (float)y, 0) + offset + transform.position;
+            return ret;
+        }
     }
-}
+

@@ -35,12 +35,9 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
- 
-
         fsm = new GameFSM();
         fsm.Initialize();
 
-      
     }
 
     public void Start()
@@ -51,17 +48,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         fsm.UpdateState();
-    }
-
-
-    public void StartLevel()
-    {
-        //call levelgeneration script 
-    }
-
-    public void EndLevel()
-    {
-        //Delete rooms
     }
 
     #region GOTO_STATE

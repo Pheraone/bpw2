@@ -21,12 +21,12 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public int points;
     Vector2 movement;
-    //public CloseDoors closingDoor;
     public int currentHealth;
-    //public bool healthBarDrop;
+    public int maxPoints;
 
     private void Start()
     {
+        maxPoints = LevelGeneration.LevelGenerator.numberOfChambers;
         points = 0;
     }
 
@@ -35,20 +35,28 @@ public class PlayerMovement : MonoBehaviour
         //input
         movement.x  = Input.GetAxisRaw("Horizontal");
         movement.y  = Input.GetAxisRaw("Vertical");
-
+        
+        //check if player is out of health
         if(currentHealth <= 0)
         {
             Dead();
         }
 
+        //checks if player gets all points in level, generates new level if the player does
+        if (points >= maxPoints)
+        {
+            points = 0;
+            LevelGeneration.LevelGenerator.GenerateNewLevel();
+        } 
     }
     
+    //Player gets damage from whatever gives damage 
     public void GetDamage(int damage)
     {
        currentHealth = currentHealth - damage;
-       //healthBarDrop = true;
     }
 
+    //if player is dead calls the lose state
     public void Dead()
     {
         GameManager.Instance.fsm.GotoState(GameStateType.Lose);
@@ -64,7 +72,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collider.tag == "DoorTrigger")
         {
+            //closes doors if player steps in the room
             DoorsBehaviour.ClosingDoors.ActivateDoors(true);
+            //destorys collider so that the room will remain open if player steps in again
             Destroy(collider.GetComponent<BoxCollider2D>());
         }
 

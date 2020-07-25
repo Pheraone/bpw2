@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class Bullet : MonoBehaviour
 {
@@ -10,21 +11,14 @@ public class Bullet : MonoBehaviour
     int myDamage = 10;
     void Start()
     {
+        //plays particles
         fireParticles.Play();
         timer = lifetime;
     }
 
-
-    
-
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            fireParticles.Stop();
-        }
-
+        //Timer for bullet to disappear
         timer -= Time.deltaTime;
         if(timer <= 0)
         {
@@ -35,15 +29,10 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collider)
     {
-        numberOfCollisions++;
-        if (numberOfCollisions >= 2)
-        {
-            Destroy(gameObject);
-        }
-
         if(collider.gameObject.tag == "Player")
         {
             PlayerMovement.Instance.GetDamage(myDamage);
+            Destroy(gameObject);
         }
     }
 }

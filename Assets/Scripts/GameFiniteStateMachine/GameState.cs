@@ -73,8 +73,7 @@ public class LoseState : GameState
 
     public override void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //    GameManager.Instance.fsm.GotoState(GameStateType.Play);
+       
     }
 }
 
@@ -95,7 +94,6 @@ public class WinState : GameState
 
     public override void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //    GameManager.Instance.fsm.GotoState(GameStateType.Play);
+       
     }
 }
