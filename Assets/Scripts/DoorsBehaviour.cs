@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class DoorsBehaviour : MonoBehaviour
 {
@@ -34,10 +32,12 @@ public class DoorsBehaviour : MonoBehaviour
     void Update()
     {
 
+      
     }
 
     public void ActivateDoors(bool active)
     {
+       
         foreach (GameObject door in doorsList)
         {
             door.SetActive(active);

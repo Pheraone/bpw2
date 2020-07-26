@@ -21,10 +21,10 @@ public class AudioHandler : MonoBehaviour
 
     
 
-    public void PlayTheMusic()
-    {
-        music.Play();
-    }
+    //public void PlayTheMusic()
+    //{
+    //    music.Play();
+    //}
 
     public void  StopTheMusic()
     {

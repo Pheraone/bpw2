@@ -39,7 +39,7 @@ public class LevelGeneration : MonoBehaviour
 
         CreateChambers();
 
-        AudioHandler.AudioHandle.PlayTheMusic();
+       // AudioHandler.AudioHandle.PlayTheMusic();
     }
 
     private void Update()
