@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        //maxpoints being set the same as the number of chambers
         maxPoints = LevelGeneration.LevelGenerator.numberOfChambers;
         points = 0;
     }

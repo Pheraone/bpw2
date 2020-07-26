@@ -34,27 +34,10 @@ public class DoorsBehaviour : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            doorToggle = !doorToggle;
-            ActivateDoors(doorToggle);
-        }
     }
 
     public void ActivateDoors(bool active)
     {
-        //    Debug.Log("doors is " + doors.Length);
-        //    if (doors.Length == 0)
-        //    {
-        //        ReloadDoors();
-        //    }
-
-        //    foreach (GameObject door in doors)
-        //    {
-        //        door.SetActive(active);
-        //    }
-        //    Debug.Log("Deur " + doors.Length);
-
         foreach (GameObject door in doorsList)
         {
             door.SetActive(active);
